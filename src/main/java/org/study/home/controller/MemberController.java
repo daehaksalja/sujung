@@ -130,20 +130,20 @@ public class MemberController {
 		return "board/memberRead";
 	}
 
-//	   @GetMapping("/memberUpdate")
-//	   public String memberUpdate(@RequestParam("user_id")String user_id, Model model) {
-//	      MemberDTO dto=memberService.memberRead(user_id);
-//	       model.addAttribute("dto",dto);
-//	      return "board/memberUpdate";
-//	   }
-//	   
-//	   @PostMapping("/memberUpdate")
-//	   public String memberUpdateProcess(MemberDTO dto) {
-//	      memberService.memberUpdate(dto);
-//	      System.out.println(dto.toString());
-//	      
-//      return "redirect:/memberUpdate?user_id="+dto.getUser_id();
-//	   }
+	   @GetMapping("/memberUpdate")
+	   public String memberUpdate(@RequestParam("user_no")String user_no, Model model) {
+	      MemberDTO dto=memberService.memberRead(user_no);
+	       model.addAttribute("dto",dto);
+	      return "board/memberUpdate";
+	   }
+	   
+	   @PostMapping("/memberUpdate")
+	   public String memberUpdateProcess(MemberDTO dto) {
+	      memberService.memberUpdate(dto);
+	      System.out.println("update ----" + dto.toString());
+	      
+      return "redirect:/memberRead?user_no="+dto.getUser_no();
+	   }
 
 
 	@PostMapping("/idCheck")
